@@ -1,0 +1,72 @@
+import requests
+import json
+import random
+from datetime import datetime, timedelta
+
+# ServiceNow instance details
+instance = 'https://your-instance.service-now.com'
+user = 'your-username'
+pwd = 'your-password'
+
+# API endpoint for creating an incident
+url = f'{instance}/api/now/table/incident'
+
+# Set proper headers
+headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+}
+
+# Define categories, priorities, and sample data
+categories = ["Hardware", "Software", "Network", "Inquiry/Help", "Database"]
+priorities = ["1 - Critical", "2 - High", "3 - Moderate", "4 - Low"]
+
+short_descriptions = [
+    "Computer Not Starting", 
+    "Application Crash", 
+    "Wi-Fi Connection Issues", 
+    "Password Reset", 
+    "Database Performance Issues"
+]
+
+detailed_descriptions = [
+    "User's laptop won't power on after charging",
+    "CRM software crashes when generating reports",
+    "User cannot connect to office Wi-Fi network",
+    "User forgot password and is unable to log in",
+    "Database query response time is very slow"
+]
+
+resolution_notes_list = [
+    "Replaced faulty battery",
+    "Applied latest software patch",
+    "Reset Wi-Fi access point and updated firmware",
+    "Password reset and user informed",
+    "Optimized database queries and cleaned up logs"
+]
+
+# Generate incidents
+def generate_incidents(num_incidents):
+    for _ in range(num_incidents):
+        incident_data = {
+            "short_description": random.choice(short_descriptions),
+            "description": random.choice(detailed_descriptions),
+            "category": random.choice(categories),
+            "priority": random.choice(priorities),
+            "resolution_notes": random.choice(resolution_notes_list),
+            "resolved_at": (datetime.now() - timedelta(days=random.randint(1, 30))).strftime('%Y-%m-%d %H:%M:%S')
+        }
+
+        # Make the HTTP request
+        response = requests.post(url, auth=(user, pwd), headers=headers, data=json.dumps(incident_data))
+
+        # Check for successful response
+        if response.status_code == 201:
+            print('Incident created successfully')
+            print(json.dumps(response.json(), indent=4))
+        else:
+            print('Failed to create incident')
+            print(response.status_code, response.text)
+
+# Generate 10 incidents as a demo
+generate_incidents(10)
