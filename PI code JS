@@ -1,0 +1,51 @@
+const axios = require('axios');
+
+const instance = 'https://<your-instance>.service-now.com';
+const username = '<your-username>';
+const password = '<your-password>';
+
+const keywords = [
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Cloud Computing",
+    "Cybersecurity",
+    "Blockchain",
+    "Big Data",
+    "DevOps",
+    "IoT",
+    "Edge Computing",
+    "5G"
+];
+
+const createIncident = async (shortDescription) => {
+    const auth = Buffer.from(`${username}:${password}`).toString('base64');
+    const data = {
+        short_description: shortDescription,
+        category: 'IT',
+        subcategory: 'General'
+    };
+
+    try {
+        const response = await axios.post(
+            `${instance}/api/now/table/incident`,
+            data,
+            {
+                headers: {
+                    'Authorization': `Basic ${auth}`,
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
+        console.log(`Incident created: ${response.data.result.number}`);
+    } catch (error) {
+        console.error(`Error creating incident: ${error.message}`);
+    }
+};
+
+const createIncidents = async () => {
+    for (const keyword of keywords) {
+        await createIncident(`Issue related to ${keyword}`);
+    }
+};
+
+createIncidents();
