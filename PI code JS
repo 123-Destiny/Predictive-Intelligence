@@ -1,3 +1,68 @@
+const itServiceDeskKeywords = [
+  "password reset", "account locked", "software installation", "network issue",
+  "printer problem", "email access", "VPN", "internet connectivity", "slow computer",
+  "software update", "hardware failure", "disk space", "file recovery", "data backup",
+  "malware", "virus", "spyware", "phishing", "system crash", "application error",
+  "server down", "login issue", "remote access", "data loss", "IT policy", "software license",
+  "user account", "performance issue", "system upgrade", "IT security", "application access",
+  "shared drive", "mobile device", "password change", "file permission", "firewall",
+  "new hardware", "telecom", "video conferencing", "helpdesk", "technical support",
+  "system configuration", "software patch", "user profile", "cloud service", "data breach",
+  "IT compliance", "device configuration", "email quarantine", "service request",
+  "incident report", "network security", "data encryption", "password management",
+  "network drive", "IP address", "proxy server", "software bug", "network speed",
+  "account creation", "account deactivation", "email configuration", "software compatibility",
+  "server maintenance", "network cable", "wireless connection", "virtual machine",
+  "system reboot", "email spam", "cloud storage", "two-factor authentication", "browser issue",
+  "OS installation", "IT audit", "application performance", "system downtime",
+  "software rollback", "data synchronization", "network latency", "user support",
+  "system performance", "software conflict", "IT asset management", "security update",
+  "software deployment", "system restore", "hardware upgrade", "data access",
+  "IT infrastructure", "password policy", "user training", "device synchronization",
+  "patch management", "software distribution", "network topology", "IT help",
+  "device replacement", "application deployment", "software subscription", "email forwarding"
+];
+
+const categories = ["Hardware", "Software", "Network", "Inquiry/Help", "Database"];
+const priorities = ["Low", "Medium", "High", "Critical"];
+const resolutionNotes = ["Issue resolved", "Pending further information", "Escalated to higher tier", "Temporary fix applied", "Closed due to inactivity"];
+
+function getRandomElement(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
+function generateIncident() {
+  const shortDescription = getRandomElement(itServiceDeskKeywords);
+  const detailedDescription = `Detailed description for ${shortDescription}`;
+  const category = getRandomElement(categories);
+  const priority = getRandomElement(priorities);
+  const resolutionNote = getRandomElement(resolutionNotes);
+  
+  return {
+    "Short Description": shortDescription,
+    "Detailed Description": detailedDescription,
+    "Category": category,
+    "Priority": priority,
+    "Resolution Notes": resolutionNote
+  };
+}
+
+// Generate 10 sample incidents
+const incidents = [];
+for (let i = 0; i < 10; i++) {
+  incidents.push(generateIncident());
+}
+
+console.log(incidents);
+
+
+
+
+*********** DO NOT USE *************
+
+
+
+
 const axios = require('axios');
 
 const instance = 'https://<your-instance>.service-now.com';
