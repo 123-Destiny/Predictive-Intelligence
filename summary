@@ -1,0 +1,51 @@
+Predictive Intelligence Implementation Summary
+
+Prerequisites:
+
+Instance Assessment:
+
+Data Quality and Completeness: Ensure data is consistent, accurate, and complete to train the model effectively.
+Cleanliness: Sanitize data to reduce noise and improve model accuracy.
+Data Model: Analyze the data structure for efficiency.
+Data Volume: Confirm there’s enough data for model training.
+Data Velocity: Evaluate how frequently data is updated and its impact on model retraining.
+Performance: Assess the machine learning environment’s performance.
+Predictive Intelligence Plugin:
+
+Clone the development instance and activate the predictive intelligence plugin.
+Validate plugin settings, configurations, and roles.
+Performance Analytics:
+
+Verify that Performance Analytics is enabled and configured.
+Assess available data sources for predictive intelligence.
+Evaluate visualization capabilities for predictive model outputs.
+Requirements:
+
+Gather detailed requirements on data points necessary for building the model, including historical data.
+Create condition sets to define solution models.
+Implement data quality checks through validation rules and scripts.
+Configuration:
+
+Create a custom stopwords list and word corpus based on customer requirements.
+Define and set up clustering solutions:
+Validate that Predictive Intelligence works after configuration changes.
+Train, validate, and retrain clusters based on results.
+Monitor and Refine: Continuously monitor model performance and retrain as needed.
+Regular Retraining: Schedule regular retraining to maintain model performance, especially in dynamic environments.
+Choosing and Configuring Machine Learning Models:
+
+Model Selection: Choose algorithms (e.g., regression, classification) based on use cases and data.
+Model Configuration: Fine-tune parameters for optimal performance.
+Model Training and Evaluation: Train models on historical data and evaluate accuracy using metrics.
+Parameter Tuning: Continuously fine-tune parameters to optimize results.
+Reporting:
+
+Visualize Predictions: Use Performance Analytics for dashboards and reports.
+Identify Trends: Analyze prediction patterns for insights.
+Predictive Intelligence Studio: Manage machine learning models.
+Best Practices:
+
+Start with a focused use case to build confidence.
+Use an iterative approach to improve models.
+Leverage ServiceNow expertise and resources.
+Adopt a no-code or low-code model per ServiceNow’s recommendations.
